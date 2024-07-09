@@ -15,15 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.views.decorators.csrf import csrf_exempt
 
 from shopify_app.views import  callback, LoginView, uninstall
-from home.views import HomeView
+from home.views import (
+    ShopifyAdminView,
+    ShopifyProxyView,
+    ShopifyWebhookView
+    )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomeView.as_view(), name='root_path'),
+    path('', ShopifyAdminView.as_view(), name='root_path'),
     path('api/', include('api.urls')),
     path('login/', LoginView.as_view(), name='login'),
     path('auth/shopify/callback', callback, name='callback'),
     path('uninstall', uninstall, name='uninstall'),
+
+    path('shopify/', ShopifyProxyView.as_view(), name='shopify'),
+    path('shopify/webhook/', ShopifyWebhookView.as_view(), name='shopify_webhook'),
+    path('shopify/sync/<str:action>/', ShopifyAdminView.as_view(), name='shopify_admin_action'),
 ]

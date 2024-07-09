@@ -1,5 +1,11 @@
-Django
-djangorestframework
-django-cors-headers
-ShopifyAPI>=8.4.0
-python-dotenv
+asgiref==3.8.1
+Django==5.0.6
+django-cors-headers==4.4.0
+djangorestframework==3.15.2
+pyactiveresource==2.2.2
+PyJWT==2.8.0
+python-dotenv==1.0.1
+PyYAML==6.0.1
+ShopifyAPI==12.6.0
+six==1.16.0
+sqlparse==0.5.0

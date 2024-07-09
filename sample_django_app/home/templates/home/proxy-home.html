@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Home</title>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <p>Your Customer ID is: {{ logged_in_customer_id }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="some_data">Enter anything:</label>
+        <input type="text" id="some_data" name="some_data" value="">
+        <button type="submit">Submit</button>
+    </form>
+
+    <p>{{ some_data }}</p>
+</body>
+</html>
